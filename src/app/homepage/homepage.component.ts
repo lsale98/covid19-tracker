@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CountriesService } from '../services/countries.service';
+import { ICountry } from '../models/Country';
+
 @Component({
   selector: 'app-homepage',
   templateUrl: './homepage.component.html',
@@ -7,7 +9,7 @@ import { CountriesService } from '../services/countries.service';
 })
 export class HomepageComponent implements OnInit {
 
-  countries: Array<any> = [];
+  countries: Array<ICountry> = [];
 
   constructor(private countriesService: CountriesService) { }
 
@@ -26,7 +28,7 @@ export class HomepageComponent implements OnInit {
         name: country.country,
         continent: country.continent,
         flag: country.countryInfo.flag,
-        iso2: country.countryInfo.iso2
+        iso2: country.countryInfo.iso2,
       });
       }
     })
