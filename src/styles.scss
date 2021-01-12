@@ -1,6 +1,19 @@
 /* You can add global styles to this file, and also import other style files */
 
+@import "variables";
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
+::-webkit-scrollbar {
+    width: 4px;
+}
+
+::-webkit-scrollbar-track {
+    background: rgb(202, 202, 202);
+}
+
+::-webkit-scrollbar-thumb {
+    background: $green-darker-color;
+}
+
 * {
     margin: 0;
     padding: 0;

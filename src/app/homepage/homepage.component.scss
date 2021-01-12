@@ -1,4 +1,4 @@
-@import "../variables";
+@import "../../variables";
 #main {
     width: 100%;
     height: 100vh;
@@ -24,7 +24,7 @@
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
-        img {
+        &__img {
             margin-bottom: 40px;
             width: 80%;
         }
@@ -38,11 +38,8 @@
             #select {
                 outline: none;
                 width: 260px;
-                display: inline-block;
                 padding: 4px 6px;
                 margin: 40px 0px;
-                text-align: center;
-                line-height: 1.2;
                 background: rgb(255, 255, 255);
                 border: 0;
                 border-radius: 5px;
@@ -53,11 +50,15 @@
                 &:focus {
                     border: 1px solid $green-lighter-color;
                 }
-                option {
-                    img {
-                        display: inline-block;
-                        //width: fit-content;
-                        height: 100%;
+                .country {
+                    padding: 4px 6px;
+                    width: 100%;
+                    font-size: 14px;
+                    .flag {
+                        width: 25px;
+                        height: 15px;
+                        margin-right: 10px;
+                        background-color: red;
                     }
                 }
             }
