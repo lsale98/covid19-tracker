@@ -12,6 +12,6 @@ export class CountriesService {
   constructor(private http: HttpClient) { }
 
   getCountries(): Observable<HttpResponse<any>>{
-    return this.http.get<ICountry>(this.API_BASE, {observe: 'response'});
+    return this.http.get<ICountry[]>(this.API_BASE, {observe: 'response'});
   }
 }
