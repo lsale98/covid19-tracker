@@ -15,7 +15,6 @@ export class HomepageComponent implements OnInit {
 
   ngOnInit(): void {
     this.getCountries();
-    console.log(this.countries);
   }
 
   getCountries(): void{
