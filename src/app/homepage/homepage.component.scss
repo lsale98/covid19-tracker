@@ -1,7 +1,7 @@
 @import "../../variables";
 #main {
     width: 100%;
-    min-height: 100vh;
+    height: 100vh;
     background-color: $blue-darker-color;
     position: relative;
     top: 0;
@@ -87,6 +87,35 @@
                     }
                 }
             }
+        }
+    }
+}
+
+@media only screen and (min-width: 620px) {
+    #main {
+        .hero {
+            &__img {
+                width: 60%;
+            }
+        }
+    }
+}
+
+@media only screen and (min-width: 850px) {
+    #main {
+        .hero {
+            &__img {
+                width: 40%;
+            }
+        }
+    }
+}
+
+@media only screen and (min-width: 1220px) {
+    #main {
+        .hero {
+            flex-direction: row;
+            justify-content: space-around;
         }
     }
 }
