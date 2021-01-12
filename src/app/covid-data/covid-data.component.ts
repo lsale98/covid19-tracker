@@ -20,11 +20,11 @@ export class CovidDataComponent implements OnInit {
       this.currentIso2 = params.get('iso2');
     });
     this.getDataForCountry();
+   
   }
 
-  getDataForCountry(): void {
+  getDataForCountry() {
     this.covidService.getDataForCountry(this.currentIso2).subscribe(response => {
-      console.log(response.body);
       const country = response.body;
 
       this.covidData = {
@@ -38,7 +38,7 @@ export class CovidDataComponent implements OnInit {
         deaths: country.deaths,
         todayDeaths: country.todayDeaths
       };
-      
+       
     });
   }
 
