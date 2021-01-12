@@ -1,12 +1,13 @@
 @import "../../variables";
 #main {
     width: 100%;
-    height: 100vh;
+    min-height: 100vh;
     background-color: $blue-darker-color;
     position: relative;
     top: 0;
     left: 0;
     padding: 40px 20px;
+    overflow: hidden;
     h1 {
         text-align: center;
         color: #ffffff;
@@ -14,51 +15,76 @@
         font-size: 26px;
     }
     .hero {
-        width: 100%;
+        width: 90%;
         height: fit-content;
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        position: absolute;
-        top: 50%;
+        position: relative;
         left: 50%;
-        transform: translate(-50%, -50%);
+        transform: translateX(-50%);
+        margin-top: 80px;
         &__img {
-            margin-bottom: 40px;
+            margin-bottom: 80px;
             width: 80%;
         }
-        .select {
+        .selection {
             padding: 0px 20px;
             h4 {
                 color: #ffffff;
                 font-size: 22px;
                 text-align: center;
             }
-            #select {
-                outline: none;
-                width: 260px;
-                padding: 4px 6px;
-                margin: 40px 0px;
-                background: rgb(255, 255, 255);
-                border: 0;
+            #dropdown {
+                transition: height 0.5s ease-in-out;
+                max-width: 280px;
+                height: 28px;
+                margin: 20px auto 0px auto;
+                background-color: #fff;
                 border-radius: 5px;
-                position: relative;
-                top: 0;
-                left: 50%;
-                transform: translateX(-50%);
-                &:focus {
-                    border: 1px solid $green-lighter-color;
+                overflow: hidden;
+                user-select: none;
+                &:hover {
+                    cursor: pointer;
                 }
-                .country {
-                    padding: 4px 6px;
+                &.show {
+                    transition: height 0.5s ease-in-out;
+                    height: 196px;
+                }
+                .title {
+                    max-width: 280px;
+                    height: 28px;
+                    font-size: 16px;
+                    padding: 5px 8px;
+                    position: relative;
+                    border-bottom: 1px solid $blue-darker-color;
+                    i {
+                        font-size: 20px;
+                        color: $blue-darker-color;
+                        position: absolute;
+                        top: 40%;
+                        right: 8px;
+                        transform: translateY(-50%);
+                    }
+                }
+                .menu {
                     width: 100%;
-                    font-size: 14px;
-                    .flag {
-                        width: 25px;
-                        height: 15px;
-                        margin-right: 10px;
-                        background-color: red;
+                    height: 168px;
+                    font-size: 16px;
+                    padding: 5px 0px;
+                    overflow-y: scroll;
+                    .country {
+                        padding: 6px 8px;
+                        display: flex;
+                        align-items: center;
+                        &:hover {
+                            background-color: $green-lighter-color;
+                        }
+                        img {
+                            width: 25px;
+                            margin-right: 10px;
+                        }
                     }
                 }
             }

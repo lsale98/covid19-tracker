@@ -2,12 +2,15 @@
     <h1>Covid19 - Tracker</h1>
     <div class="hero">
         <img class="hero__img" src="../../assets/hero.svg" alt="Hero image">
-        <div class="select">
+        <div class="selection">
             <h4>Select country to see current data about virus!</h4>
-            <select name="select" id="select">
-                <option class="country" value="worldwide">Worldwide</option>
-                <option class="country" *ngFor="let country of countries" value="{{country.iso2}}"><img src="{{country.flag}}" alt="{{country.name}} flag">{{country.name}}</option>
-            </select>
+            <div id="dropdown" [ngClass]="{'show': isOpen}">
+                <div (click)="toogleMenu()" class="title">Select country<i class="fas fa-sort-down"></i></div>
+                <div class="menu">
+                    <div class="country" routerLink="/world">Wordlwide</div>
+                    <div class="country" *ngFor="let country of countries" routerLink="/{{country.iso2}}"><img src="{{country.flag}}" alt="{{country.name}} flag">{{country.name}}</div>
+                </div>
+            </div>
         </div>
     </div>
 </div>

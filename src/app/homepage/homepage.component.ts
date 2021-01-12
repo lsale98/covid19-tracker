@@ -9,6 +9,8 @@ import { ICountry } from '../models/Country';
 })
 export class HomepageComponent implements OnInit {
 
+  isOpen: boolean = false;
+
   countries: Array<ICountry> = [];
 
   constructor(private countriesService: CountriesService) { }
@@ -29,6 +31,10 @@ export class HomepageComponent implements OnInit {
       });
       }
     })
+  }
+
+  toogleMenu(): void{
+    this.isOpen = !this.isOpen;
   }
 
 }

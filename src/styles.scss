@@ -6,8 +6,9 @@
     width: 4px;
 }
 
-::-webkit-scrollbar-track {
+ ::-webkit-scrollbar-track {
     background: rgb(202, 202, 202);
+    border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb {
