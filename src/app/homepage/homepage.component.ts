@@ -16,12 +16,10 @@ export class HomepageComponent implements OnInit {
   ngOnInit(): void {
     this.getCountries();
     console.log(this.countries);
-    
   }
 
   getCountries(): void{
     this.countriesService.getCountries().subscribe(response => {
-      console.log(response);
       let countries = response.body;
       for (let country of countries) {
         this.countries.push({
