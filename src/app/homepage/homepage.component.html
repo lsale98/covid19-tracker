@@ -4,6 +4,10 @@
         <img src="../../assets/hero.svg" alt="Hero image">
         <div class="select">
             <h4>Select country to see current data about virus!</h4>
+            <select name="select" id="select">
+                <option value="worldwide">Worldwide</option>
+                <option *ngFor="let country of countries" value="{{country.iso2}}"><img src="{{country.flag}}" alt="">{{country.name}}</option>
+            </select>
         </div>
     </div>
 </div>

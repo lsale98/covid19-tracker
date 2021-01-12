@@ -21,6 +21,10 @@
         flex-direction: column;
         justify-content: center;
         align-items: center;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
         img {
             margin: 40px 0px;
             width: 80%;
@@ -29,8 +33,31 @@
             margin: 40px 0px;
             padding: 0px 20px;
             h4 {
-                color: $green-lighter-color;
+                //color: $green-lighter-color;
+                color: #ffffff;
                 font-size: 22px;
+                text-align: center;
+            }
+            #select {
+                outline: none;
+                width: 260px;
+                display: inline-block;
+                padding: 4px 3px 3px 5px;
+                margin: 20px 0px;
+                text-align: center;
+                line-height: 1.2;
+                background: rgb(255, 255, 255);
+                border: 0;
+                position: relative;
+                top: 0;
+                left: 50%;
+                transform: translateX(-50%);
+                option {
+                    img {
+                        width: 20px;
+                        height: 14px;
+                    }
+                }
             }
         }
     }
