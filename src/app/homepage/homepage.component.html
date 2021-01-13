@@ -2,7 +2,7 @@
     <p>Collecting data</p>
     <mat-spinner id="spinner" [color]="color"></mat-spinner>
 </div>
-<div id="main">
+<div id="main" *ngIf="countries">
     <h1>Covid19 - Tracker</h1>
     <div class="hero">
         <img class="hero__img" src="../../assets/hero.svg" alt="Hero image">
