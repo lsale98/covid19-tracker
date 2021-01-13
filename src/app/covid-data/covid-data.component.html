@@ -1,1 +1,4 @@
-<img src="{{covidData.flag}}" alt="" *ngIf="covidData">
+<div *ngIf="loaderService.isLoading | async" class="loader__container">
+    <p>Collecting data</p>
+    <mat-spinner id="spinner" [color]="color"></mat-spinner>
+</div>

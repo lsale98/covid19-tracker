@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { ThemePalette } from '@angular/material/core';
 import { ActivatedRoute } from '@angular/router';
 import { ICovidData } from '../models/CovidData';
 import { CovidService } from '../services/covid.service'; 
+import { LoaderService } from '../services/loader.service';
 @Component({
   selector: 'app-covid-data',
   templateUrl: './covid-data.component.html',
@@ -9,11 +11,12 @@ import { CovidService } from '../services/covid.service';
 })
 export class CovidDataComponent implements OnInit {
 
+  color: ThemePalette = 'accent';
   currentIso2: string;
 
   covidData: ICovidData;
 
-  constructor(private covidService: CovidService, private route: ActivatedRoute) { }
+  constructor(private covidService: CovidService, private route: ActivatedRoute, public loaderService: LoaderService) { }
 
   ngOnInit(): void {
     this.route.paramMap.subscribe(params => {
