@@ -63,8 +63,8 @@
             height: fit-content;
             &__circle {
                 margin: 20px auto;
-                width: 120px;
-                height: 120px;
+                width: 150px;
+                height: 150px;
                 border-radius: 50%;
                 display: flex;
                 flex-direction: column;
@@ -92,7 +92,7 @@
                     font-weight: 700;
                 }
                 p {
-                    font-size: 14px;
+                    font-size: 16px;
                     text-transform: uppercase;
                 }
             }
