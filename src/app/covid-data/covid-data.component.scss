@@ -19,102 +19,46 @@
 #country {
     width: 100%;
     min-height: 100vh;
-    background-color: $blue-darker-color;
-    padding: 40px 20px;
-    .back {
-        display: block;
-        width: fit-content;
-        margin-left: auto;
-        margin-bottom: 20px;
-        text-decoration: none;
-        background-color: $green-darker-color;
-        padding: 8px 16px;
-        border-radius: 5px;
-        color: #fff;
+    padding: 20px;
+    .header {
+        width: 100%;
+        height: fit-content;
+        background-color: $blue-darker-color;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px;
+        border-radius: 10px;
+        .back {
+            background-color: $blue-lighter-color;
+            padding: 5px 12px;
+            border-radius: 10px;
+            color: #fff;
+        }
+        .display__info {
+            display: flex;
+            justify-content: space-between;
+            .flag {
+                width: 38px;
+                height: 29px;
+                border-radius: 10px;
+            }
+        }
     }
-    .country {
+    .display__name {
+        width: 100%;
+        h2 {
+            text-align: center;
+            margin-top: 20px;
+            color: $blue-darker-color;
+        }
+    }
+    .data {
+        width: 100%;
+        height: fit-content;
+        padding: 20px;
         display: flex;
         flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        margin-top: 40px;
-        overflow: hidden;
-        &__details {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            flex-direction: column;
-            .country__img {
-                width: 120px;
-                height: 80px;
-                border-radius: 10px;
-                margin-bottom: 10px;
-            }
-            .info {
-                padding: 0px 20px;
-                color: white;
-                text-align: center;
-                h4 {
-                    margin-top: 10px;
-                    margin-right: 5px;
-                    text-transform: uppercase;
-                    i {
-                        color: $green-darker-color;
-                    }
-                }
-            }
-        }
-        &__data {
-            margin-top: 50px;
-            width: 100%;
-            overflow-y: hidden;
-            padding: 8px 10px;
-            &::-webkit-scrollbar {
-                display: none;
-            }
-            .wrapper {
-                width: 600px;
-                display: flex;
-                justify-content: space-around;
-                .card {
-                    width: 180px;
-                    height: 90px;
-                    padding: 8px;
-                    background-color: #fff;
-                    border-radius: 10px;
-                    display: flex;
-                    flex-direction: column;
-                    justify-content: space-between;
-                    .current__data {
-                        width: fit-content;
-                        margin: auto;
-                        .data {
-                            font-size: 24px;
-                        }
-                        p {
-                            text-transform: uppercase;
-                            font-size: 10px;
-                            text-align: right;
-                        }
-                        &.cases,
-                        &.deaths {
-                            .data {
-                                color: $red-darker-color;
-                            }
-                        }
-                        &.recovered {
-                            .data {
-                                color: $green-darker-color;
-                            }
-                        }
-                    }
-                    .current__today__data {
-                        p {
-                            text-transform: uppercase;
-                        }
-                    }
-                }
-            }
-        }
+        justify-content: space-around;
     }
 }

@@ -8,12 +8,14 @@ import { HomepageComponent } from './homepage/homepage.component';
 import { CovidDataComponent } from './covid-data/covid-data.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { InterceptorService } from './services/interceptor.service';
+import { LargeNumberPipe } from './pipes/large-number.pipe';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomepageComponent,
-    CovidDataComponent
+    CovidDataComponent,
+    LargeNumberPipe
   ],
   imports: [
     BrowserModule,

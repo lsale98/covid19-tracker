@@ -2,47 +2,21 @@
     <p>Collecting data</p>
     <mat-spinner id="spinner" [color]="color"></mat-spinner>
 </div>
-<div *ngIf="covidData">
-    <div id="country">
-        <a routerLink="/" class="back">Choose country</a>
-        <div class="country">
-            <div class="country__details">
-                <img src="{{covidData.flag}}" alt="{{covidData.flag}} flag" class="country__img">
-                <div class="info">
-                    <h2>{{covidData.name}}</h2>
-                    <h4>{{covidData.continent}} <i class="fas fa-globe-europe"></i></h4>
-                </div>
-            </div>
-            <div class="country__data">
-                <div class="wrapper">
-                    <div class="card">
-                        <div class="current__data cases">
-                            <p class="data">{{covidData.cases | number}}</p>
-                            <p>cases</p>
-                        </div>
-                        <div class="current__today__data cases">
-                            <p>Today: <span>+ {{covidData.todayCases | number}}</span></p>
-                        </div>
-                    </div>
-                    <div class="card">
-                        <div class="current__data recovered">
-                            <p class="data">{{covidData.recovered | number}}</p>
-                            <p>recovered</p>
-                        </div>
-                        <div class="current__today__data recovered">
-                            <p>Today: <span>+ {{covidData.todayRecovered | number}}</span></p>
-                        </div>
-                    </div>
-                    <div class="card">
-                        <div class="current__data deaths">
-                            <p class="data">{{covidData.deaths | number}}</p>
-                            <p>deaths</p>
-                        </div>
-                        <div class="current__today__data deaths">
-                            <p>Today: <span> + {{covidData.todayDeaths | number}}</span></p>
-                        </div>
-                    </div>
-                </div>
+<div *ngIf="covidData" id="country">
+    <div class="header">
+        <a routerLink="/" class="back"><i class="fas fa-arrow-left"></i></a>
+        <div class="display__info">
+            <img src="{{covidData.flag}}" alt="{{covidData.name}} flag" class="flag">
+        </div>
+    </div>
+    <div class="display__name">
+        <h2>{{covidData.name}}</h2>
+    </div>
+
+    <div class="data">
+        <div id="cases">
+            <div id="cases__circle">
+                <h3>{{covidData.cases | largeNumber}}</h3>
             </div>
         </div>
     </div>
