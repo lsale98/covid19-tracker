@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { CountriesService } from '../services/countries.service';
 import { ICountry } from '../models/Country';
+import { LoaderService } from '../services/loader.service';
+import { ThemePalette } from '@angular/material/core';
 
 @Component({
   selector: 'app-homepage',
@@ -9,11 +11,12 @@ import { ICountry } from '../models/Country';
 })
 export class HomepageComponent implements OnInit {
 
+  color: ThemePalette = 'accent';
   isOpen: boolean = false;
 
   countries: Array<ICountry> = [];
 
-  constructor(private countriesService: CountriesService) { }
+  constructor(private countriesService: CountriesService,public loaderService: LoaderService) { }
 
   ngOnInit(): void {
     this.getCountries();

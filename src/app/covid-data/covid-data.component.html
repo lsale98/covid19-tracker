@@ -2,3 +2,15 @@
     <p>Collecting data</p>
     <mat-spinner id="spinner" [color]="color"></mat-spinner>
 </div>
+
+<div *ngIf="covidData">
+    <img src="{{covidData.flag}}" alt="">
+    <h1>{{covidData.name}}</h1>
+    <h1>{{covidData.continent}}</h1>
+    <h1>{{covidData.cases}}</h1>
+    <h1>{{covidData.recovered}}</h1>
+    <h1>{{covidData.deaths}}</h1>
+    <h1>{{covidData.todayCases}}</h1>
+    <h1>{{covidData.todayRecovered}}</h1>
+    <h1>{{covidData.todayDeaths}}</h1>
+</div>

@@ -5,6 +5,11 @@
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    background-color: #fff;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 99;
     #spinner {
         margin-top: 20px;
     }
