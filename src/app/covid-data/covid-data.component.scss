@@ -20,82 +20,69 @@
     width: 100%;
     min-height: 100vh;
     padding: 20px;
-    .header {
-        width: 100%;
-        height: fit-content;
-        background-color: $blue-darker-color;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 10px;
-        border-radius: 10px;
-        .back {
-            background-color: $blue-lighter-color;
-            padding: 5px 12px;
-            border-radius: 10px;
-            color: #fff;
-        }
-        .display__info {
-            display: flex;
-            justify-content: space-between;
-            .flag {
-                width: 38px;
-                height: 29px;
-                border-radius: 10px;
-            }
-        }
-    }
-    .display__name {
-        width: 100%;
-        h2 {
-            text-align: center;
-            margin-top: 20px;
-        }
-    }
-    .data {
+    #data {
         width: 100%;
         height: fit-content;
         padding: 20px;
-        display: flex;
-        flex-direction: column;
-        &__info {
-            width: 100%;
-            height: fit-content;
-            &__circle {
-                margin: 20px auto;
-                width: 150px;
-                height: 150px;
-                border-radius: 50%;
+        background-color: #222B45;
+        //background-color: $blue-darker-color;
+        border-radius: 20px;
+        .display__info {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            .country {
                 display: flex;
-                flex-direction: column;
-                justify-content: center;
+                justify-content: space-between;
                 align-items: center;
-                &.cases {
-                    border: 5px solid $red-darker-color;
-                    h3 {
-                        color: $red-darker-color;
-                    }
+                img {
+                    width: 35px;
+                    border-radius: 5px;
+                    margin-right: 10px;
                 }
-                &.recovered {
-                    border: 5px solid $green-darker-color;
-                    h3 {
-                        color: $green-darker-color;
-                    }
-                }
-                &.deaths {
-                    border: 5px solid #333;
-                    h3 {
-                        color: #333;
-                    }
-                }
-                h3 {
-                    font-weight: 700;
-                }
-                p {
-                    font-size: 16px;
-                    text-transform: uppercase;
+                h4 {
+                    color: #fff;
                 }
             }
+            .change {
+                display: block;
+                color: #fff;
+                text-decoration: none;
+                background-color: #4f5d86;
+                padding: 8px 12px;
+                border-radius: 10px;
+                font-size: 14px;
+            }
+        }
+        .statistics {
+            margin-top: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            .data {
+                text-align: center;
+                p {
+                    font-size: 16px;
+                    margin-bottom: 5px;
+                }
+                h4 {
+                    color: #fff;
+                }
+                &.cases {
+                    color: rgb(233, 99, 22);
+                }
+                &.recovered {
+                    color: $green-lighter-color;
+                }
+                &.deaths {
+                    color: $red-darker-color;
+                }
+            }
+        }
+        .chart {
+            margin-top: 40px;
+            height: 300px;
+            color: white;
         }
     }
 }

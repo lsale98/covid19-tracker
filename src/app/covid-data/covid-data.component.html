@@ -3,34 +3,28 @@
     <mat-spinner id="spinner" [color]="color"></mat-spinner>
 </div>
 <div *ngIf="covidData" id="country">
-    <div class="header">
-        <a routerLink="/" class="back"><i class="fas fa-arrow-left"></i></a>
+    <main id="data">
         <div class="display__info">
-            <img src="{{covidData.flag}}" alt="{{covidData.name}} flag" class="flag">
+            <div class="country">
+                <img src="{{covidData.flag}}" alt="{{covidData.name}} flag">
+                <h4>{{covidData.name}}</h4>
+            </div>
+            <a routerLink="/" class="change">Change</a>
         </div>
-    </div>
-    <div class="display__name">
-        <h2>{{covidData.name}}</h2>
-    </div>
-
-    <div class="data">
-        <div class="data__info">
-            <div class="data__info__circle cases">
-                <h3>{{covidData.cases | largeNumber}}</h3>
-                <p>cases</p>
+        <div class="statistics">
+            <div class="data cases">
+                <p>Cases</p>
+                <h4>{{covidData.cases | largeNumber}}</h4>
+            </div>
+            <div class="data recovered">
+                <p>Recovered</p>
+                <h4>{{covidData.recovered | largeNumber}}</h4>
+            </div>
+            <div class="data deaths">
+                <p>Deaths</p>
+                <h4>{{covidData.deaths | largeNumber}}</h4>
             </div>
         </div>
-        <div class="data__info">
-            <div class="data__info__circle recovered">
-                <h3>{{covidData.recovered | largeNumber}}</h3>
-                <p>recovered</p>
-            </div>
-        </div>
-        <div class="data__info">
-            <div class="data__info__circle deaths">
-                <h3>{{covidData.deaths | largeNumber}}</h3>
-                <p>deaths</p>
-            </div>
-        </div>
-    </div>
+        <div echarts [options]="options" class="chart"></div>
+    </main>
 </div>
