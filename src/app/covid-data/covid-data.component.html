@@ -14,9 +14,22 @@
     </div>
 
     <div class="data">
-        <div id="cases">
-            <div id="cases__circle">
+        <div class="data__info">
+            <div class="data__info__circle cases">
                 <h3>{{covidData.cases | largeNumber}}</h3>
+                <p>cases</p>
+            </div>
+        </div>
+        <div class="data__info">
+            <div class="data__info__circle recovered">
+                <h3>{{covidData.recovered | largeNumber}}</h3>
+                <p>recovered</p>
+            </div>
+        </div>
+        <div class="data__info">
+            <div class="data__info__circle deaths">
+                <h3>{{covidData.deaths | largeNumber}}</h3>
+                <p>deaths</p>
             </div>
         </div>
     </div>

@@ -50,7 +50,6 @@
         h2 {
             text-align: center;
             margin-top: 20px;
-            color: $blue-darker-color;
         }
     }
     .data {
@@ -59,6 +58,44 @@
         padding: 20px;
         display: flex;
         flex-direction: column;
-        justify-content: space-around;
+        &__info {
+            width: 100%;
+            height: fit-content;
+            &__circle {
+                margin: 20px auto;
+                width: 120px;
+                height: 120px;
+                border-radius: 50%;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                &.cases {
+                    border: 5px solid $red-darker-color;
+                    h3 {
+                        color: $red-darker-color;
+                    }
+                }
+                &.recovered {
+                    border: 5px solid $green-darker-color;
+                    h3 {
+                        color: $green-darker-color;
+                    }
+                }
+                &.deaths {
+                    border: 5px solid #333;
+                    h3 {
+                        color: #333;
+                    }
+                }
+                h3 {
+                    font-weight: 700;
+                }
+                p {
+                    font-size: 14px;
+                    text-transform: uppercase;
+                }
+            }
+        }
     }
 }
