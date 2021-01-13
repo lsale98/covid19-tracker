@@ -2,15 +2,48 @@
     <p>Collecting data</p>
     <mat-spinner id="spinner" [color]="color"></mat-spinner>
 </div>
-
 <div *ngIf="covidData">
-    <img src="{{covidData.flag}}" alt="">
-    <h1>{{covidData.name}}</h1>
-    <h1>{{covidData.continent}}</h1>
-    <h1>{{covidData.cases}}</h1>
-    <h1>{{covidData.recovered}}</h1>
-    <h1>{{covidData.deaths}}</h1>
-    <h1>{{covidData.todayCases}}</h1>
-    <h1>{{covidData.todayRecovered}}</h1>
-    <h1>{{covidData.todayDeaths}}</h1>
+    <div id="country">
+        <a routerLink="/" class="back">Choose country</a>
+        <div class="country">
+            <div class="country__details">
+                <img src="{{covidData.flag}}" alt="{{covidData.flag}} flag" class="country__img">
+                <div class="info">
+                    <h2>{{covidData.name}}</h2>
+                    <h4>{{covidData.continent}} <i class="fas fa-globe-europe"></i></h4>
+                </div>
+            </div>
+            <div class="country__data">
+                <div class="wrapper">
+                    <div class="card">
+                        <div class="current__data cases">
+                            <p class="data">{{covidData.cases | number}}</p>
+                            <p>cases</p>
+                        </div>
+                        <div class="current__today__data cases">
+                            <p>Today: <span>+ {{covidData.todayCases | number}}</span></p>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="current__data recovered">
+                            <p class="data">{{covidData.recovered | number}}</p>
+                            <p>recovered</p>
+                        </div>
+                        <div class="current__today__data recovered">
+                            <p>Today: <span>+ {{covidData.todayRecovered | number}}</span></p>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="current__data deaths">
+                            <p class="data">{{covidData.deaths | number}}</p>
+                            <p>deaths</p>
+                        </div>
+                        <div class="current__today__data deaths">
+                            <p>Today: <span> + {{covidData.todayDeaths | number}}</span></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
