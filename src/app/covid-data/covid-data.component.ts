@@ -12,6 +12,7 @@ import { LoaderService } from '../services/loader.service';
 export class CovidDataComponent implements OnInit {
 
   options: any;
+  theme: string = "dark";
   color: ThemePalette = 'accent';
   currentIso2: string;
 
@@ -28,7 +29,7 @@ export class CovidDataComponent implements OnInit {
       this.currentIso2 = params.get('iso2');
     });
     this.getDataForCountry();
-    this.generateChart();
+   
    
   }
 
@@ -49,10 +50,11 @@ export class CovidDataComponent implements OnInit {
       };
        
     });
+    this.generateChart();
   }
 
   generateChart() {
-    this.covidService.getData30Days().subscribe(response => {
+    this.covidService.getData30Days(this.currentIso2).subscribe(response => {
       let casesData = response.body.timeline.cases;
       let recoveredData = response.body.timeline.recovered;
       let deathsData = response.body.timeline.deaths;
@@ -60,60 +62,75 @@ export class CovidDataComponent implements OnInit {
       const cKeys = Object.keys(casesData);
 
       cKeys.forEach(key => {
-        this.cases.push(casesData[key]);
+        this.cases.unshift(casesData[key]);
       });
 
       const rKeys = Object.keys(recoveredData);
 
       rKeys.forEach(key => {
-        this.recovered.push(recoveredData[key]);
+        this.recovered.unshift(recoveredData[key]);
       });
 
        const dKeys = Object.keys(deathsData);
 
       dKeys.forEach(key => {
-        this.deaths.push(deathsData[key]);
+        this.deaths.unshift(deathsData[key]);
       });
      
       
     
     });
-    const xAxisData = ['Week 1','Week 2','Week 3','Week 4'];
+    const xAxisData = [];
 
-  
+    for (let i = 0; i < 120; i++){
+      xAxisData.unshift([i + 1]+'d Ago');
+    }
+
+    
 
     this.options = {
+      color: ['rgb(233, 99, 22)', ' #36F6B6', '#F03C31'],
+      
       legend: {
         data: ['Cases', 'Recovered', 'Deaths'],
         align: 'left',
       },
-      tooltip: {},
+      tooltip: {
+      },
       xAxis: {
         data: xAxisData,
         silent: true,
         splitLine: {
           show: false,
         },
+         axisLabel: {
+          color: '#fff',
+        },
       },
       yAxis: {
-        
+         axisLine: {
+          show: false,
+        },
+        axisLabel: {
+          show: false
+        },
       },
       series: [
         {
           name: 'Cases',
-          type: 'bar',
+          type: 'line',
           data: this.cases,
           animationDelay: (idx) => idx * 10,
         },
           {
           name: 'Recovered',
-          type: 'bar',
+          type: 'line',
           data: this.recovered,
           animationDelay: (idx) => idx * 10 + 100,
         },
          {
           name: 'Deaths',
-          type: 'bar',
+          type: 'line',
           data: this.deaths,
           animationDelay: (idx) => idx * 10 + 100,
         },
