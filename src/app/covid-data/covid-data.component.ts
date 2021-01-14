@@ -92,7 +92,8 @@ export class CovidDataComponent implements OnInit {
       color: ['rgb(233, 99, 22)', ' #36F6B6', '#F03C31'],
       
       legend: {
-        data: ['Cases', 'Recovered', 'Deaths'],
+        data: [],
+        show: false,
         align: 'left',
       },
       tooltip: {
