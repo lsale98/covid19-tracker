@@ -16,7 +16,7 @@ export class CountriesService {
     return this.http.get<ICountry[]>(this.API_BASE, {observe: 'response'});
   }
 
-  getCountriesTop101(): Observable<HttpResponse<any>>{
+  getCountriesTop10(): Observable<HttpResponse<any>>{
     return this.http.get<ITopCountry>(this.API_BASE, {observe: 'response'});
   }
 }

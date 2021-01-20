@@ -3,7 +3,9 @@ import { ThemePalette } from '@angular/material/core';
 import { ActivatedRoute } from '@angular/router';
 import { ICovidData } from '../models/CovidData';
 import { CovidService } from '../services/covid.service'; 
+import { CountriesService } from '../services/countries.service'; 
 import { LoaderService } from '../services/loader.service';
+import { ITopCountry } from '../models/TopCountry';
 
 @Component({
   selector: 'app-covid-data',
@@ -23,14 +25,17 @@ export class CovidDataComponent implements OnInit {
   recovered: Array<number> = [];
   deaths: Array<number> = [];
 
-  constructor(private covidService: CovidService, private route: ActivatedRoute, public loaderService: LoaderService) { }
+  countries: Array<ITopCountry> = [];
+  top10Countries: Array<ITopCountry> = [];
+
+  constructor(private covidService: CovidService, private route: ActivatedRoute, public loaderService: LoaderService, private countriesService: CountriesService) { }
 
   ngOnInit(): void {
     this.route.paramMap.subscribe(params => {
       this.currentIso2 = params.get('iso2');
     });
     this.getDataForCountry();
-   
+    this.getTopCountries();
    
   }
 
@@ -145,6 +150,22 @@ export class CovidDataComponent implements OnInit {
     };
     });
   
+  }
+
+  getTopCountries(): void{
+    this.countriesService.getCountriesTop10().subscribe(response => {
+      let topCountries = response.body;
+
+      for (let country of topCountries) {
+        this.countries.push({
+          name: country.country,
+          flag: country.countryInfo.flag,
+          cases: country.cases,
+        });
+      }
+
+      this.top10Countries = this.countries.sort((a, b) => b.cases - a.cases).slice(0, 10);      
+    });
   }
 
 }

@@ -27,4 +27,16 @@
         </div>
         <div echarts [options]="options" class="chart"></div>
     </main>
+    <div class="top10">
+        <h3>Top 10 countries with the most cases</h3>
+        <div class="list">
+            <div class="top" *ngFor="let country of top10Countries">
+                <img src="{{country.flag}}" alt="{{country.name}} flag">
+                <div class="info">
+                    <p>{{country.name | uppercase}}</p>
+                    <p>{{country.cases | largeNumber}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
