@@ -4,6 +4,7 @@ import { ActivatedRoute } from '@angular/router';
 import { ICovidData } from '../models/CovidData';
 import { CovidService } from '../services/covid.service'; 
 import { LoaderService } from '../services/loader.service';
+
 @Component({
   selector: 'app-covid-data',
   templateUrl: './covid-data.component.html',
@@ -48,13 +49,15 @@ export class CovidDataComponent implements OnInit {
         deaths: country.deaths,
         todayDeaths: country.todayDeaths
       };
-       
+      this.generateChart();
+      
     });
-    this.generateChart();
+
   }
 
   generateChart() {
-    this.covidService.getData30Days(this.currentIso2).subscribe(response => {
+
+    this.covidService.getData30Days(this.currentIso2).toPromise().then(response => {
       let casesData = response.body.timeline.cases;
       let recoveredData = response.body.timeline.recovered;
       let deathsData = response.body.timeline.deaths;
@@ -71,7 +74,7 @@ export class CovidDataComponent implements OnInit {
         this.recovered.unshift(recoveredData[key]);
       });
 
-       const dKeys = Object.keys(deathsData);
+      const dKeys = Object.keys(deathsData);
 
       dKeys.forEach(key => {
         this.deaths.unshift(deathsData[key]);
@@ -79,8 +82,8 @@ export class CovidDataComponent implements OnInit {
      
       
     
-    });
-    const xAxisData = [];
+    }).then(() => {
+        const xAxisData = [];
 
     for (let i = 0; i < 120; i++){
       xAxisData.unshift([i + 1]+'d Ago');
@@ -140,6 +143,8 @@ export class CovidDataComponent implements OnInit {
       animationEasing: 'elasticOut',
       animationDelayUpdate: (idx) => idx * 5,
     };
+    });
+  
   }
 
 }
