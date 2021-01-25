@@ -3,7 +3,7 @@
     <mat-spinner id="spinner" [color]="color"></mat-spinner>
 </div>
 <div *ngIf="covidData" id="country">
-    <main id="data">
+    <!-- <main id="data">
         <div class="display__info">
             <div class="country">
                 <img src="{{covidData.flag}}" alt="{{covidData.name}} flag">
@@ -38,5 +38,34 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> -->
+    <header id="country__info">
+        <a routerLink="/"><i class="fas fa-chevron-left"></i>{{covidData.name}}</a>
+        <img src="{{covidData.flag}}" alt="{{covidData.name}} flag">
+    </header>
+    <main id="statistics">
+        <div id="statistics__card">
+            <div class="card cases">
+                <div class="circle">
+                    <p>Cases</p>
+                    <h2>{{covidData.cases | largeNumber}}</h2>
+                    <h3>+ {{covidData.todayCases | largeNumber}}</h3>
+                </div>
+            </div>
+            <div class="card recovered">
+                <div class="circle">
+                    <p>Recovered</p>
+                    <h2>{{covidData.recovered | largeNumber}}</h2>
+                    <h3>+ {{covidData.todayRecovered | largeNumber}}</h3>
+                </div>
+            </div>
+            <div class="card deaths">
+                <div class="circle">
+                    <p>Deaths</p>
+                    <h2>{{covidData.deaths | largeNumber}}</h2>
+                    <h3>+ {{covidData.todayDeaths | largeNumber}}</h3>
+                </div>
+            </div>
+        </div>
+    </main>
 </div>

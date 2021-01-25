@@ -20,121 +20,82 @@
         width: 100%;
         min-height: 100vh;
         padding: 20px;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-        align-items: center;
-        #data {
-            width: 100%;
-            height: fit-content;
-            padding: 20px;
-            background-color: #222B45;
-            border-radius: 20px;
-            .display__info {
-                display: flex;
-                justify-content: space-between;
-                align-items: center;
-                .country {
-                    display: flex;
-                    justify-content: space-between;
-                    align-items: center;
-                    img {
-                        width: 35px;
-                        border-radius: 5px;
-                        margin-right: 10px;
-                    }
-                    h4 {
-                        color: #fff;
-                    }
-                }
-                .change {
-                    display: block;
-                    color: #fff;
-                    text-decoration: none;
-                    background-color: #4f5d86;
-                    padding: 8px 12px;
-                    border-radius: 10px;
-                    font-size: 14px;
+        background-color: $blue-darker-color;
+        //overflow: hidden;
+        &__info {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 8px;
+            margin-bottom: 40px;
+            a {
+                text-decoration: none;
+                color: #fff;
+                i {
+                    margin-right: 8px;
                 }
             }
-            .statistics {
-                margin-top: 20px;
+            img {
+                width: 60px;
+                height: 40px;
+                border-radius: 10px;
+            }
+        }
+        #statistics {
+            width: 100%;
+            height: fit-content;
+            &__card {
+                width: 100%;
                 display: flex;
-                justify-content: space-between;
-                align-items: center;
-                .data {
-                    text-align: center;
-                    p {
-                        font-size: 16px;
-                        margin-bottom: 5px;
-                    }
-                    h4 {
-                        color: #fff;
+                padding: 10px 0px;
+                overflow-x: scroll;
+                &::-webkit-scrollbar {
+                    display: none;
+                }
+                .card {
+                    width: 160px;
+                    height: 160px;
+                    background-color: #fff;
+                    border-radius: 10px;
+                    padding: 15px;
+                    margin: 0px 20px;
+                    .circle {
+                        width: 130px;
+                        height: 130px;
+                        border-radius: 50%;
+                        display: flex;
+                        flex-direction: column;
+                        justify-content: center;
+                        align-items: center;
+                        h2 {
+                            font-weight: bold;
+                        }
                     }
                     &.cases {
-                        color: rgb(233, 99, 22);
+                        .circle {
+                            border: 5px solid $red-darker-color;
+                            h2 {
+                                color: $red-darker-color;
+                            }
+                        }
                     }
                     &.recovered {
-                        color: $green-lighter-color;
+                        .circle {
+                            border: 5px solid $green-darker-color;
+                            h2 {
+                                color: $green-darker-color;
+                            }
+                        }
                     }
                     &.deaths {
-                        color: $red-darker-color;
+                        .circle {
+                            border: 5px solid #333;
+                            h2 {
+                                color: #333;
+                            }
+                        }
                     }
                 }
-            }
-            .chart {
-                margin-top: 20px;
-                height: 250px;
-                width: 100%;
-            }
-        }
-        .top10 {
-            width: 100%;
-            height: fit-content;
-            padding: 20px;
-            border-radius: 20px;
-            background-color: #222B45;
-            margin-top: 40px;
-            h3 {
-                color: white;
-                text-align: center;
-                margin-bottom: 20px;
-            }
-            .list {
-                list-style-type: none;
-                .top {
-                    width: 100%;
-                    height: fit-content;
-                    padding: 10px 0px;
-                    display: flex;
-                    justify-content: space-between;
-                    align-items: center;
-                    color: white;
-                    img {
-                        width: 50px;
-                    }
-                    .info {
-                        width: 100%;
-                        padding: 0px 10px;
-                        display: flex;
-                        justify-content: space-between;
-                        align-items: center;
-                    }
-                }
-            }
-        }
-    }
-    
-    @media only screen and (min-width: 1000px) {
-        #country {
-            flex-direction: row;
-            align-items: flex-start;
-            #data {
-                margin-right: 10px;
-            }
-            .top10 {
-                margin: 0;
-                margin-left: 10px;
             }
         }
     }
