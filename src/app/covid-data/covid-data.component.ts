@@ -15,7 +15,7 @@ import { ITopCountry } from '../models/TopCountry';
 export class CovidDataComponent implements OnInit {
 
   options: any;
-  theme: string = "dark";
+  // theme: string = "dark";
   color: ThemePalette = 'accent';
   currentIso2: string;
 
@@ -62,7 +62,7 @@ export class CovidDataComponent implements OnInit {
 
   generateChart() {
 
-    this.covidService.getData30Days(this.currentIso2).toPromise().then(response => {
+    this.covidService.getData120Days(this.currentIso2).toPromise().then(response => {
       let casesData = response.body.timeline.cases;
       let recoveredData = response.body.timeline.recovered;
       let deathsData = response.body.timeline.deaths;
@@ -97,11 +97,10 @@ export class CovidDataComponent implements OnInit {
     
 
     this.options = {
-      color: ['rgb(233, 99, 22)', ' #36F6B6', '#F03C31'],
+      color: ['#F03C31', '#2FD4CB', '#333'],
       
       legend: {
-        data: [],
-        show: false,
+        data: ['Cases', 'Recovered', 'Deaths'],
         align: 'left',
       },
       tooltip: {
@@ -113,7 +112,7 @@ export class CovidDataComponent implements OnInit {
           show: false,
         },
          axisLabel: {
-          color: '#fff',
+          color: '#333',
         },
       },
       yAxis: {

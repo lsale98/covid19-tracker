@@ -17,7 +17,7 @@ export class CovidService {
     return this.http.get<ICovidData>(this.BASE_API_COUNTRY + iso2, {observe: 'response'});
   }
 
-  getData30Days(iso2: string): Observable<HttpResponse<any>>{
+  getData120Days(iso2: string): Observable<HttpResponse<any>>{
     return this.http.get<any>(this.BASE_API_120 + iso2 + "?lastdays=120", {observe: 'response'});
   }
 }

@@ -43,29 +43,48 @@
         <a routerLink="/"><i class="fas fa-chevron-left"></i>{{covidData.name}}</a>
         <img src="{{covidData.flag}}" alt="{{covidData.name}} flag">
     </header>
-    <main id="statistics">
-        <div id="statistics__card">
-            <div class="card cases">
-                <div class="circle">
-                    <p>Cases</p>
-                    <h2>{{covidData.cases | largeNumber}}</h2>
-                    <h3>+ {{covidData.todayCases | largeNumber}}</h3>
+    <div class="wrapper">
+        <main id="statistics">
+            <div id="statistics__card">
+                <div class="card cases">
+                    <div class="circle">
+                        <p>Cases</p>
+                        <h2>{{covidData.cases | largeNumber}}</h2>
+                        <h3>+ {{covidData.todayCases | largeNumber}}</h3>
+                    </div>
+                </div>
+                <div class="card recovered">
+                    <div class="circle">
+                        <p>Recovered</p>
+                        <h2>{{covidData.recovered | largeNumber}}</h2>
+                        <h3>+ {{covidData.todayRecovered | largeNumber}}</h3>
+                    </div>
+                </div>
+                <div class="card deaths">
+                    <div class="circle">
+                        <p>Deaths</p>
+                        <h2>{{covidData.deaths | largeNumber}}</h2>
+                        <h3>+ {{covidData.todayDeaths | largeNumber}}</h3>
+                    </div>
                 </div>
             </div>
-            <div class="card recovered">
-                <div class="circle">
-                    <p>Recovered</p>
-                    <h2>{{covidData.recovered | largeNumber}}</h2>
-                    <h3>+ {{covidData.todayRecovered | largeNumber}}</h3>
+            <div id="statistics__chart">
+                <div echarts [options]="options" class="chart"></div>
+            </div>
+        </main>
+        <section id="top__countries">
+            <h3>Top 10 Country cases</h3>
+            <div class="list">
+                <div class="top__country" *ngFor="let country of top10Countries">
+                    <div class="top__country__info">
+                        <img src="{{country.flag}}" alt="{{country.name}} flag">
+                        <h4>{{country.name}}</h4>
+                    </div>
+                    <div class="top__country__number">
+                        <h4>{{country.cases | number}}</h4>
+                    </div>
                 </div>
             </div>
-            <div class="card deaths">
-                <div class="circle">
-                    <p>Deaths</p>
-                    <h2>{{covidData.deaths | largeNumber}}</h2>
-                    <h3>+ {{covidData.todayDeaths | largeNumber}}</h3>
-                </div>
-            </div>
-        </div>
-    </main>
+        </section>
+    </div>
 </div>
