@@ -34,9 +34,36 @@ export class CovidDataComponent implements OnInit {
     this.route.paramMap.subscribe(params => {
       this.currentIso2 = params.get('iso2');
     });
-    this.getDataForCountry();
+
+    if (this.currentIso2 == 'world') {
+      this.getDataForAll();
+      this.getTopCountries();
+    }
+    else {
+       this.getDataForCountry();
     this.getTopCountries();
+    }
    
+  }
+
+  getDataForAll() {
+    this.covidService.getDataForAll().subscribe(response => {
+      const country = response.body;
+
+      this.covidData = {
+        name: 'World',
+        flag: '',
+        continent: '',
+        cases: country.cases,
+        todayCases: country.todayCases,
+        recovered: country.recovered,
+        todayRecovered: country.todayRecovered,
+        deaths: country.deaths,
+        todayDeaths: country.todayDeaths
+      };
+      this.generateChartForWorld();
+      
+    });
   }
 
   getDataForCountry() {
@@ -58,6 +85,96 @@ export class CovidDataComponent implements OnInit {
       
     });
 
+  }
+
+  generateChartForWorld() {
+     this.covidService.getDataAll120Days(this.currentIso2).toPromise().then(response => {
+      let casesData = response.body.cases;
+      let recoveredData = response.body.recovered;
+      let deathsData = response.body.deaths;
+
+      const cKeys = Object.keys(casesData);
+
+      cKeys.forEach(key => {
+        this.cases.unshift(casesData[key]);
+      });
+
+      const rKeys = Object.keys(recoveredData);
+
+      rKeys.forEach(key => {
+        this.recovered.unshift(recoveredData[key]);
+      });
+
+      const dKeys = Object.keys(deathsData);
+
+      dKeys.forEach(key => {
+        this.deaths.unshift(deathsData[key]);
+      });
+     
+      
+    
+    }).then(() => {
+        const xAxisData = [];
+
+    for (let i = 0; i < 120; i++){
+      xAxisData.unshift([i + 1]+'d Ago');
+    }
+
+    
+
+    this.options = {
+      color: ['#F03C31', '#2FD4CB', '#333'],
+      
+      legend: {
+        data: ['Cases', 'Recovered', 'Deaths'],
+        align: 'left',
+      },
+      tooltip: {
+      },
+      xAxis: {
+        data: xAxisData,
+        silent: true,
+        splitLine: {
+          show: false,
+        },
+         axisLabel: {
+          color: '#333',
+        },
+      },
+      yAxis: {
+         axisLine: {
+          show: false,
+        },
+        axisLabel: {
+          show: false
+        },
+      },
+      series: [
+        {
+          name: 'Cases',
+          type: 'line',
+          data: this.cases,
+          animationDelay: (idx) => idx * 10,
+        },
+          {
+          name: 'Recovered',
+          type: 'line',
+          data: this.recovered,
+          animationDelay: (idx) => idx * 10 + 100,
+        },
+         {
+          name: 'Deaths',
+          type: 'line',
+          data: this.deaths,
+          animationDelay: (idx) => idx * 10 + 100,
+        },
+      
+      ],
+      animationEasing: 'elasticOut',
+      animationDelayUpdate: (idx) => idx * 5,
+    };
+    });
+    
   }
 
   generateChart() {

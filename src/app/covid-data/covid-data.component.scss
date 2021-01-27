@@ -20,7 +20,8 @@
         width: 100%;
         min-height: 100vh;
         padding: 20px;
-        background-color: $blue-darker-color;
+        //background-color: $blue-darker-color;
+        background: linear-gradient(180deg, rgba(26, 76, 117, 1) 0%, rgba(47, 132, 212, 1) 100%);
         overflow: hidden;
         &__info {
             display: flex;
@@ -138,6 +139,7 @@
                             img {
                                 width: 60px;
                                 margin-right: 10px;
+                                border-radius: 5px;
                             }
                         }
                         &__number {
@@ -185,7 +187,18 @@
         }
     }
     
-    @media only screen and (min-width: 1440px) {
+    @media only screen and (min-width: 1280px) {
+        #country {
+            padding: 20px 50px;
+            .wrapper {
+                #statistics {
+                    flex: 50%;
+                }
+            }
+        }
+    }
+    
+    @media only screen and (min-width: 1540px) {
         #country {
             padding: 20px 100px;
             // .wrapper {

@@ -41,7 +41,7 @@
     </div> -->
     <header id="country__info">
         <a routerLink="/"><i class="fas fa-chevron-left"></i>{{covidData.name}}</a>
-        <img src="{{covidData.flag}}" alt="{{covidData.name}} flag">
+        <img *ngIf="covidData.flag" src="{{covidData.flag}}" alt="{{covidData.name}} flag">
     </header>
     <div class="wrapper">
         <main id="statistics">
